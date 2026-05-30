@@ -81,31 +81,30 @@
     border-color: #2ecc71;
     background: linear-gradient(135deg, #161b22 70%, #0d2818);
   }
-  .date-block { flex-shrink: 0; text-align: center; width: 56px; }
-  .date-wd { font-size: 11px; font-weight: 600; color: #6e7681; margin-bottom: 2px; }
+  .date-block { flex-shrink: 0; text-align: center; width: 46px; }
+  .date-wd { font-size: 11px; font-weight: 600; color: #6e7681; margin-bottom: 4px; }
   .date-md { font-size: 20px; font-weight: 800; line-height: 1.1; }
   .date-md em { font-size: 11px; font-weight: 500; color: #8b949e; font-style: normal; }
-  .date-yr { font-size: 10px; color: #6e7681; margin-top: 2px; }
   .latest-tag {
     font-size: 9px; font-weight: 700; color: #2ecc71;
     background: rgba(46,204,113,.12); border: 1px solid rgba(46,204,113,.3);
-    padding: 1px 7px; border-radius: 10px; margin-top: 4px; display: inline-block;
+    padding: 1px 7px; border-radius: 10px; margin-top: 6px; display: inline-block;
   }
-  .sep { width: 1px; height: 48px; background: #30363d; flex-shrink: 0; }
+  .sep { width: 1px; height: 54px; background: #30363d; flex-shrink: 0; }
   .draw-card.latest .sep { background: rgba(46,204,113,.4); }
-  .balls { display: flex; gap: 7px; flex-wrap: wrap; flex: 1; }
+  .balls { display: flex; justify-content: space-evenly; flex-wrap: nowrap; flex: 1; }
   .ball {
-    width: 42px; height: 42px; border-radius: 50%;
+    width: 54px; height: 54px; border-radius: 50%;
     display: flex; align-items: center; justify-content: center;
-    font-size: 14px; font-weight: 800; color: #fff;
-    position: relative; box-shadow: 0 3px 8px rgba(0,0,0,.4);
+    font-size: 16px; font-weight: 800; color: #fff;
+    position: relative; box-shadow: 0 3px 10px rgba(0,0,0,.4);
     flex-shrink: 0;
   }
   .ball[data-r="1"] { background: linear-gradient(135deg,#e74c3c,#c0392b); }
   .ball[data-r="2"] { background: linear-gradient(135deg,#3498db,#2980b9); }
   .ball[data-r="3"] { background: linear-gradient(135deg,#f39c12,#e67e22); }
   .ball::before {
-    content:''; position:absolute; top:6px; left:8px;
+    content:''; position:absolute; top:8px; left:10px;
     width:12px; height:6px;
     background:rgba(255,255,255,.35); border-radius:50%;
   }
@@ -176,17 +175,16 @@
     /* 開獎卡片 */
     .draws-grid { gap: 8px; }
     .draw-card { padding: 10px 12px; gap: 10px; }
-    .date-block { width: 44px; }
+    .date-block { width: 42px; }
     .date-wd { font-size: 10px; }
     .date-md { font-size: 17px; }
-    .date-yr { font-size: 10px; }
     .latest-tag { font-size: 8px; padding: 1px 6px; }
-    .sep { height: 42px; }
+    .sep { height: 46px; }
 
-    /* 彩球：縮小以確保5顆單行排列 */
-    .balls { gap: 5px; flex-wrap: nowrap; }
-    .ball { width: 36px; height: 36px; font-size: 13px; }
-    .ball::before { top: 5px; left: 7px; width: 10px; height: 5px; }
+    /* 彩球：均分右側區塊 */
+    .balls { justify-content: space-evenly; flex-wrap: nowrap; }
+    .ball { width: 46px; height: 46px; font-size: 15px; }
+    .ball::before { top: 6px; left: 8px; width: 11px; height: 6px; }
 
     /* 分析卡片：單欄 */
     .analysis-grid { grid-template-columns: 1fr; gap: 10px; }
@@ -294,7 +292,6 @@ const drawsEl = document.getElementById("draws");
     <div class="date-block">
       <div class="date-wd">${WD[d.weekday] ?? d.weekday}</div>
       <div class="date-md">${dt.getMonth()+1}<em>月</em>${dt.getDate()}</div>
-      <div class="date-yr">${dt.getFullYear()}</div>
       ${idx === 0 ? '<div class="latest-tag">最新</div>' : ""}
     </div>
     <div class="sep"></div>
